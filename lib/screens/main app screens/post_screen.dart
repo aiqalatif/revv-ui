@@ -716,6 +716,7 @@ class PostCarScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
         child: Column(
+      
           children: [
             SizedBox(height: 50,),
             Expanded(
@@ -771,7 +772,7 @@ class CarCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 230,
+   
       width: 160,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
@@ -780,8 +781,9 @@ class CarCard extends StatelessWidget {
           color: Colors.grey.shade300, // Light border
         ),
       ),
-      padding: const EdgeInsets.all(8), // thoda compact padding
+      padding: const EdgeInsets.all(5), // thoda compact padding
       child: Column(
+        
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Car Image
@@ -789,12 +791,12 @@ class CarCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             child: Image.asset(
               'assets/images/carcard.png',
-              height: 100,
+              height: 80,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
           ),
-          const SizedBox(height: 6), // 👈 gap kam kiya
+          const SizedBox(height: 5), // 👈 gap kam kiya
 
           // Car name + likes
           Row(

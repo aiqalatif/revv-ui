@@ -95,6 +95,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, ),

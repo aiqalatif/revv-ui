@@ -56,6 +56,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black,
       body: Padding(
         padding: const EdgeInsets.all(24),

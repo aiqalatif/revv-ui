@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tiktok/screens/main%20app%20screens/account-verification.dart';
 //import 'package:revv/screens/main app screens/post_screen.dart';
 import 'post_screen.dart';
 
@@ -98,11 +99,8 @@ class _CameraScreenState extends State<CameraScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => PostScreen(
-            files: [File(image.path)],
-            isVideo: false,
-            category: 'Car',
-            isBusinessMode: false,
+          builder: (context) => AccountVerificationScreen(
+           
           ),
         ),
       );
