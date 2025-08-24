@@ -121,9 +121,12 @@ class _PostScreenState extends State<PostScreen> {
     videoController?.dispose();
     super.dispose();
   }
+  // 🔹 Common pink color define kar lo
+
 
   @override
   Widget build(BuildContext context) {
+    const appPink = Color(0xFFFF6B81);
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -147,7 +150,7 @@ class _PostScreenState extends State<PostScreen> {
             child: ElevatedButton(
               onPressed: _handlePost,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                backgroundColor: Color(0xFFFF6B81),
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -186,12 +189,12 @@ class _PostScreenState extends State<PostScreen> {
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.business, color: Colors.blue, size: 20),
+                    Icon(Icons.business, color: appPink, size: 20),
                     const SizedBox(width: 8),
                     Text(
                       'Business Mode Active',
                       style: GoogleFonts.poppins(
-                        color: Colors.blue,
+                        color: appPink,
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
@@ -362,7 +365,7 @@ class _PostScreenState extends State<PostScreen> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.blue),
+                borderSide: BorderSide(color: Color(0xFFFF6B81)),
               ),
               filled: true,
               fillColor: Colors.white.withOpacity(0.05),
@@ -414,7 +417,7 @@ class _PostScreenState extends State<PostScreen> {
                   value: selectedCategory,
                   dropdownColor: Colors.black87,
                   style: GoogleFonts.poppins(color: Colors.white),
-                  decoration: const InputDecoration(
+                  decoration:  InputDecoration(
                     border: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white30),
                     ),
@@ -422,7 +425,7 @@ class _PostScreenState extends State<PostScreen> {
                       borderSide: BorderSide(color: Colors.white30),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blue),
+                      borderSide: BorderSide(color:Color(0xFFFF6B81) ),
                     ),
                   ),
                   items: categories.map((category) {
@@ -483,7 +486,7 @@ class _PostScreenState extends State<PostScreen> {
                       _selectScheduledDate();
                     }
                   },
-                  activeColor: Colors.blue,
+                  activeColor: Color(0xFFFF6B81),
                 ),
               ],
             ),
@@ -501,7 +504,7 @@ class _PostScreenState extends State<PostScreen> {
             ),
             child: Row(
               children: [
-                Icon(Icons.analytics, color: Colors.green, size: 24),
+                Icon(Icons.analytics, color: Color(0xFFFF6B81), size: 24),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Column(
@@ -568,7 +571,7 @@ class _PostScreenState extends State<PostScreen> {
               children: [
                 Icon(
                   isPublic ? Icons.public : Icons.lock,
-                  color: isPublic ? Colors.green : Colors.orange,
+                  color: isPublic ? Color(0xFFFF6B81) : Colors.orange,
                   size: 24,
                 ),
                 const SizedBox(width: 12),
@@ -599,7 +602,7 @@ class _PostScreenState extends State<PostScreen> {
                   onChanged: (value) {
                     setState(() => isPublic = value);
                   },
-                  activeColor: Colors.green,
+                  activeColor: Color(0xFFFF6B81),
                 ),
               ],
             ),
@@ -619,7 +622,7 @@ class _PostScreenState extends State<PostScreen> {
               children: [
                 Icon(
                   isCommentsEnabled ? Icons.comment : Icons.comment_outlined,
-                  color: isCommentsEnabled ? Colors.blue : Colors.grey,
+                  color: isCommentsEnabled ? Color(0xFFFF6B81) : Colors.grey,
                   size: 24,
                 ),
                 const SizedBox(width: 12),
@@ -650,7 +653,7 @@ class _PostScreenState extends State<PostScreen> {
                   onChanged: (value) {
                     setState(() => isCommentsEnabled = value);
                   },
-                  activeColor: Colors.blue,
+                  activeColor: Color(0xFFFF6B81),
                 ),
               ],
             ),

@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tiktok/screens/main%20app%20screens/post_screen.dart';
-
+//import 'package:revv/screens/main app screens/post_screen.dart';
+import 'post_screen.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
@@ -82,23 +82,28 @@ class _CameraScreenState extends State<CameraScreen> {
       ResolutionPreset.veryHigh,
       ResolutionPreset.ultraHigh,
     ];
-    
+
     final currentIndex = resolutions.indexOf(currentResolution);
     final nextIndex = (currentIndex + 1) % resolutions.length;
-    
+
     setState(() => currentResolution = resolutions[nextIndex]);
     initCamera();
   }
 
   Future<void> takePicture() async {
     if (!controller!.value.isInitialized) return;
-    
+
     try {
       final image = await controller!.takePicture();
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) =>PostCarScreen()
+          builder: (context) => PostScreen(
+            files: [File(image.path)],
+            isVideo: false,
+            category: 'Car',
+            isBusinessMode: false,
+          ),
         ),
       );
     } catch (e) {
@@ -108,11 +113,11 @@ class _CameraScreenState extends State<CameraScreen> {
 
   Future<void> startVideoRecording() async {
     if (!controller!.value.isInitialized) return;
-    
+
     try {
       await controller!.startVideoRecording();
       setState(() => isRecording = true);
-      
+
       recordingTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
         setState(() => recordingDuration++);
       });
@@ -123,7 +128,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
   Future<void> stopVideoRecording() async {
     if (!controller!.value.isRecordingVideo) return;
-    
+
     try {
       final video = await controller!.stopVideoRecording();
       recordingTimer?.cancel();
@@ -131,11 +136,16 @@ class _CameraScreenState extends State<CameraScreen> {
         isRecording = false;
         recordingDuration = 0;
       });
-      
+
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) =>PostCarScreen()
+          builder: (context) => PostScreen(
+            files: [File(video.path)],
+            isVideo: true,
+            category: 'Car',
+            isBusinessMode: false,
+          ),
         ),
       );
     } catch (e) {
@@ -151,7 +161,12 @@ class _CameraScreenState extends State<CameraScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => PostCarScreen()
+            builder: (context) => PostScreen(
+              files: pickedFiles.map((e) => File(e.path)).toList(),
+              isVideo: false,
+              category: 'Car',
+              isBusinessMode: false,
+            ),
           ),
         );
       }
@@ -231,7 +246,11 @@ class _CameraScreenState extends State<CameraScreen> {
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: IconButton(
-                    icon: const Icon(Icons.close, color: Colors.white, size: 24),
+                    icon: const Icon(
+                      Icons.close,
+                      color: Colors.white,
+                      size: 24,
+                    ),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ),
@@ -304,7 +323,10 @@ class _CameraScreenState extends State<CameraScreen> {
               right: 0,
               child: Center(
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.red.withOpacity(0.8),
                     borderRadius: BorderRadius.circular(20),
@@ -407,7 +429,10 @@ class _CameraScreenState extends State<CameraScreen> {
                 // Resolution Indicator
                 Container(
                   margin: const EdgeInsets.only(top: 20),
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.black54,
                     borderRadius: BorderRadius.circular(15),
@@ -430,10 +455,7 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   Widget _buildGridOverlay() {
-    return CustomPaint(
-      painter: GridPainter(),
-      size: Size.infinite,
-    );
+    return CustomPaint(painter: GridPainter(), size: Size.infinite);
   }
 }
 

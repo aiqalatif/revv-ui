@@ -105,7 +105,7 @@ class _SignupScreenState extends State<SignupScreen> {
             children: [
 
               const SizedBox(height: 50),
-              GestureDetector(
+               GestureDetector(
                 onTap: (){
                   Navigator.pop(context);
                 },
@@ -115,13 +115,13 @@ class _SignupScreenState extends State<SignupScreen> {
                   width: 50,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                     gradient: LinearGradient(
-                colors: 
-                  const [Colors.orange, Colors.pink]
+                   
+                color: Color(0xFFFF6B81)
+               
                  
-                            ), 
+                            
                   ),
-                  child: Icon(Icons.arrow_back_ios,size: 25,)),
+                  child: Center(child: Icon(Icons.arrow_back_ios,size: 25,))),
               ),
  const SizedBox(height: 50),
               Center(child: Image.asset('assets/images/car.jpg',scale:4)),

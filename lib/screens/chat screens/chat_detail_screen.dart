@@ -31,13 +31,13 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                   width: 50,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                     gradient: LinearGradient(
-                colors: 
-                  const [Colors.orange, Colors.pink]
+                   
+                color: Color(0xFFFF6B81)
+               
                  
-                            ), 
+                            
                   ),
-                  child: Icon(Icons.arrow_back_ios,size: 25,)),
+                  child: Center(child: Icon(Icons.arrow_back_ios,size: 25,))),
               ),
  
       ),

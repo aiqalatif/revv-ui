@@ -11,23 +11,23 @@ class CarDetailPage extends StatelessWidget {
         title: const Text("Car Details"),
         backgroundColor: Colors.black,
         centerTitle: true,
-        leading:   GestureDetector(
+        leading:    GestureDetector(
                 onTap: (){
                   Navigator.pop(context);
                 },
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10 ) ,
+                  margin: EdgeInsets.symmetric(vertical: 10, ) ,
                   height: 50,
                   width: 50,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                     gradient: LinearGradient(
-                colors: 
-                  const [Colors.orange, Colors.pink]
+                   
+                color: Color(0xFFFF6B81)
+               
                  
-                            ), 
+                            
                   ),
-                  child: Icon(Icons.arrow_forward_ios,size: 25,)),
+                  child: Center(child: Icon(Icons.arrow_back_ios,size: 25,))),
               ),
       ),
       body: SingleChildScrollView(
